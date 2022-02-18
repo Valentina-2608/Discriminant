@@ -1,0 +1,70 @@
+﻿ <!DOCTYPE HTML>
+<html>
+<head>
+<title>Roots</title>
+<style>
+.main{width:500px;
+height:430px;
+background-color:lightgray;
+margin: 0 auto;}
+p{font-size:20px;
+font-weight:bold;
+margin:20px;}
+input{margin-left:20px;}
+button{margin-left:20px;
+margin-top:20px;}
+h2{text-align:center;
+padding-top:10px;}
+</style>
+</head>
+<body>
+<!--Напишите скрипт, который будет находить корни квадратного уравнения.
+ Для этого сделайте 3 инпута, в которые будут вводиться коэффициенты уравнения.-->
+<div class="main">
+<h2>The roots of the quadratic equation</h2>
+<p>Enter the first coefficient</p>
+<input type="text" id="first"><br>
+<p>Enter the second coefficient</p>
+<input type="text" id="second"><br>
+<p>Enter the third coefficient</p>
+<input type="text" id="third"><br>
+<button id="calculation">Calculate</button>
+<button id="clear">Clear</button>
+<p id="result">Result:</p>
+</div>
+<script>
+let first=document.getElementById('first');
+let second=document.getElementById('second');
+let third=document.getElementById('third');
+let result=document.getElementById('result');
+let calculation=document.getElementById('calculation');
+let clear=document.getElementById('clear');
+calculation.addEventListener('click',func1);
+clear.addEventListener('click',func2);
+function func1(){
+	let a=parseFloat(first.value);
+	let b=parseFloat(second.value);
+	let c=parseFloat(third.value);
+	let D=b*b-4*a*c;
+	if (D>0){
+		let x1=(-b-Math.sqrt(D))/(2*a);
+		let x2=(-b+Math.sqrt(D))/(2*a);
+		result.innerHTML=result.innerHTML+' '+'x1='+x1+', '+'x2='+x2;
+	}else if(D==0){
+		let x=(-b-Math.sqrt(D))/(2*a);
+		result.innerHTML=result.innerHTML+' '+'x='+x;
+	}else if(D<0){
+		result.innerHTML=result.innerHTML+'розвязків немає';
+	}
+};
+
+function func2(){
+	first.value='';
+	second.value='';
+	third.value='';
+	result.innerHTML='Result:';
+}
+
+</script>
+</body>
+</html>
